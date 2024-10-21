@@ -2,23 +2,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function adjustStyleSheet() {
+            if (window.innerWidth <= 500) {
+                document.querySelector('link[href="style.css"]').setAttribute('href', 'style-phone.css');
+            }else if (window.innerWidth >= 600){
+                document.querySelector('link[href="style.css"]').setAttribute('href', 'style.css');
+            }
+        }
+        window.addEventListener('resize', adjustStyleSheet);
+        window.addEventListener('DOMContentLoaded', adjustStyleSheet);
+    </script>
+    <link rel="stylesheet" href="style.css">
     <title>年号変換機</title>
 
 </head>
 <body>
     <p>西暦 → 和暦</p>
+    <div class="w2j">
         <label for="yearInput">西暦：</label>
-        <input type="number" id="yearInput" min="1868" max="2100">
+        <input type="number" id="yearInput" min="1868" max="2100" placeholder="xxxx">
         <label>年</label>
-        <button onclick="w2jconvert()">変換</button>
+        <script>
+            const inputWS = document.getElementById('yearInput');
+            
+            inputWS.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    w2jconvert();
+                }
+            });
+        </script>
+        <button onclick="w2jconvert()">✓</button>
         <br>
-        <label>和暦：</label>
-        <label id="result">西暦を入力してください</label>
+        <br>
+            <label id="result">   </label>
+    </div>
         <br>
         <br>
-        <br>
+        <hr>
         <br>
     <p>和暦 → 西暦</p>
+    <div class="j2w">
         <label for="JPyearIN">和暦：</label>
         <select id="eraInput" value="元号を選択...">
             <option value="R">令和</option>
@@ -27,11 +51,21 @@
             <option value="T">大正</option>
             <option value="M">明治</option>
         </select>
-        <input type="number" id="jpyearIn" min="1" max="100">
+        <input type="number" id="jpyearIn" min="1" max="100" placeholder="xx">
         <label>年</label>
-        <button onclick="j2wconvert()">変換</button>
+        <script>
+            const inputJP = document.getElementById('jpyearIn');
+            
+            inputJP.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    j2wconvert();
+                }
+            });
+        </script>
+        <button onclick="j2wconvert()" >✓</button>
         <br>
-        <label>西暦：</label>
-        <label id="wresult">和暦を入力してください</label>
+        <br>
+            <label id="wresult"> </label>
+    </div>
     <script src="script.js"></script>
 </body>

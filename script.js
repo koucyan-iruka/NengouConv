@@ -19,7 +19,7 @@ function w2jconvert(){
                 era = "明治";
                 JY = year - 1867;
             } else {
-                document.getElementById('result').innerText = "1868年以前の西暦には対応していません。";
+                document.getElementById('result').innerText = "1868年以降の西暦を\n入力してください";
                 return;
             }
 
@@ -28,21 +28,37 @@ function w2jconvert(){
 }
 
 function j2wconvert(){
-    const era = document.getElementById("eraInput").value;
-    const year = parseInt(document.getElementById("jpyearIn").value);
-    let WY = 0;
+    const jpYearInput = document.getElementById('jpyearIn');
+    const jpYearValue = jpYearInput.value;
+    
+    console.log(jpYearValue);
+    
+    const eraInput = document.getElementById('eraInput').value;
+    let year;
 
-    if (era == "M"){
-        WY = year - 33 + 1900;
-    } else if(era == "T"){
-        WY = year + 11 + 1900;
-    } else if(era == "S"){
-        WY = year + 25 + 1900;
-    }else if(era == "H"){
-        WY = year - 12 + 2000;
-    }else if(era == "R"){
-        WY = year + 18 + 2000;
+    switch (eraInput) {
+        case 'R':
+            year = 2018 + parseInt(jpYearValue);
+            break;
+        case 'H':
+            year = 1988 + parseInt(jpYearValue);
+            break;
+        case 'S':
+            year = 1925 + parseInt(jpYearValue);
+            break;
+        case 'T':
+            year = 1911 + parseInt(jpYearValue);
+            break;
+        case 'M':
+            year = 1867 + parseInt(jpYearValue);
+            break;
+
+        default:
+        return;
     }
+    document.getElementById('wresult').innerText = `${year}年`;
 
-    document.getElementById("wresult").innerText = WY + "年";
+    if (document.getElementById("jpyearIn").value == ""){
+        document.getElementById("wresult").innerText = "有効な年数を\n入力してください";
+    }
 }

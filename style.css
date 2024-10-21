@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+    margin-top: 50px;   
+}
+hr{
+    border: 1px solid black;    
+    width: 50vw;
+}
+
+p{
+    font-size: 32px;
+}
+
+label{
+    font-size: 28px;
+}
+
+input{
+    font-size: 28px;
+    text-align: right;
+    width: 5ch;
+}
+
+select{
+    font-size: 28px;
+}
+
+button{
+    font-size: 24px;
+    background-color: lightpink;
+    border-radius: 10%;
+    border-color: white;
+}
