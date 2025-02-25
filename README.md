@@ -5,7 +5,7 @@ A converter of Japanese carender both Western Calender.
 - Convert between Japanese carender and Western Calender
 - Supports up to 1868 (the first year of Meiji)
 
-# How to use
+## How to use
 - Western to Japanese  
     Just input the western year then hit enter key or click ✓ button
 
